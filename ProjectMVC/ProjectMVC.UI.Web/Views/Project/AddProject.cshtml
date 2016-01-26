@@ -1,0 +1,20 @@
+﻿@model ProjectMVC.Model.ProjectModal
+
+@{
+    ViewBag.Title = "AddProject";
+}
+
+<h2>AddProject</h2>
+
+@using (Html.BeginForm("AddProject", "Project", FormMethod.Post))
+{
+    @Html.Label("Project name");
+    @Html.TextBoxFor(p => p.Name, new {@class= "form-control", placeholder = "Name" });
+    @Html.ValidationMessageFor(p => p.Name);
+    <p>@Html.Label("Location")</p>
+    @Html.TextBoxFor(p => p.Location, new { @class = "form-control", placeholder = "Location" });
+    @Html.ValidationMessageFor(p => p.Location);
+    <p>@Html.Label("Department")</p>
+    <p>@Html.DropDownListFor(p=>p.DepartmentCode, new SelectList(ViewBag.BindDepartment, "Code", "Name"), new {@class= "form-control" })</p>
+    <input class="btn btn-primary" type="submit" value="Add" />
+}

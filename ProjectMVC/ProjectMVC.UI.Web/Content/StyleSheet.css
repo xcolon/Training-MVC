@@ -1,0 +1,21 @@
+﻿body {
+}
+
+/*.field-validation-error{ 
+    color: red; font-weight: bold; 
+}*/
+
+.input-validation-error{ 
+    color: red; font-weight: bold;
+    border-color:red;
+    background-color:#f3c7c7;
+
+}
+
+.dataTables_filter{
+    display:none;
+}
+
+.labelText{
+    font-weight:bold;
+}

@@ -1,0 +1,107 @@
+﻿@model List<ProjectMVC.Model.ProjectModal>
+
+@{
+    ViewBag.Title = "ProjectList";
+}
+
+@if (TempData["notice"] != null)
+{
+    <p>@TempData["notice"]</p>
+}
+<h2>ProjectList</h2>
+
+<div class="containeer">
+    <div class="row">
+        <div>
+            @using (Html.BeginForm("ProjectList", "Project"))
+            {
+                @Html.Label("Name")
+                <p><input class="form-control" placeholder="Project name" type="text" name="name" /></p>
+                @Html.Label("Location")
+                <p><input class="form-control" placeholder="Location" type="text" name="Location" /></p>
+                <p><input class="btn btn-primary" type="submit" value="Search" /> @Html.ActionLink("Add", "AddProject", null, new { @class = "btn btn-info" }) </p>
+            }
+        </div>
+    </div>
+    <div>
+        <a class="btn btn btn-warning" role="button" data-toggle="collapse" href="#collapseDataTable" aria-expanded="true" aria-controls="collapseDataTable">
+            DataTable
+        </a>
+        <a class="btn btn btn-warning" role="button" data-toggle="collapse" href="#collapseHTMLTable" aria-expanded="false" aria-controls="collapseHTMLTable">
+            HTMLTable
+        </a>
+    </div>
+    <div class="collapse" id="collapseDataTable">
+        <div class="well" style="margin-top: 10px">
+            <table id="project_table" name="projectTable" class="table display" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Project name</th>
+                        <th>Location</th>
+                        <th>Deparment</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="collapse" id="collapseHTMLTable">
+        <div class="well" style="margin-top: 10px">
+            <table id="project_table" name="projectTable" class="table table-striped display" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Project name</th>
+                        <th>Location</th>
+                        <th>Deparment</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @foreach (ProjectMVC.Model.ProjectModal item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Location</td>
+                        <td>@item.DepartmentName</td>
+                        <td>@Html.ActionLink("Edit", "Edit", new { id = @item.ID }, new { @class = "btn btn-info" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", new { id = @item.ID }, new { @class = "btn btn-danger" })</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#collapseHTMLTable').collapse({ 'toggle': true });
+            $('#project_table').DataTable({
+                "ajax": {
+                    "type": "POST",
+                    "url": "/Project/AjaxGetAllData",
+                },
+                "columns": [
+                    { "data": "ID" },
+                    { "data": "Name" },
+                    { "data": "Location" },
+                    { "data": "DepartmentName" },
+                    {
+                        "data": function (row) {
+                            return '<a type="button" class="btn btn-info" href=/Project/Edit/' + row.ID + '>' + 'Edit' + '</a>';
+                        }
+                    },
+                    {
+                        "data": function (row) {
+                            return '<a type="button" class="btn btn-danger" href=/Project/Delete/' + row.ID + '>' + 'Delete' + '</a>';
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

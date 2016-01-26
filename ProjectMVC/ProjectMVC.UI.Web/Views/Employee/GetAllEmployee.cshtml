@@ -1,0 +1,188 @@
+﻿@model List<ProjectMVC.Model.EmployeeModel>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>GetAllEmployee</h2>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h4><label class="labelText">Search:</label></h4>
+            <input type="text" id="txtSearchData" class="form-control" placeholder="EmployeeSSN,Firstname,LastName" />
+            <p>
+                <input class="btn btn-success" id="btnSearch" style="margin-top:10px;" value="Search" />
+                <button class="btn btn-warning fa fa-plus" style="margin-top:10px;" data-toggle="modal" data-target="#AddModal">Add</button>
+            </p>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="employee_table" class="table display" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>EmployeeSSN</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Mid name</th>
+                    <th>Birthday</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>Department name</th>
+                    <th>Salary</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    @* Modal *@
+    <div class="modal fade" id="AddModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Employee Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label for="ssnInput" class="col-sm-1 control-label" style="margin-top: 10px;">SSN</label>
+                        <div class="col-sm-5">
+                            <input id="ssnInput" name="ssnInput" class="form-control" type="text" style="margin-top: 10px" placeholder="SSN Number" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <label for="nameInput" class="col-sm-1 control-label">Name</label>
+                        <div class="col-sm-4">
+                            <input id="firstNameInput" name="firstNameInput" class="form-control" type="text" placeholder="FirstName" />
+                        </div>
+                        <div class="col-sm-3">
+                            <input id="midNameInput" name="midNameInput" class="form-control" type="text" placeholder="MidName" />
+                        </div>
+                        <div class="col-sm-4">
+                            <input id="lastNameInput" name="lastNameInput" class="form-control" type="text" placeholder="LastName" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <label for="birthdateEmp" class="col-sm-1 control-label">Birthdate</label>
+                        <div class="col-sm-4">
+                            <div class='input-group date' id='birthDatePicker'>
+                                <input type="text" class="form-control" id="birthdateEmp" name="birthdateEmp" placeholder="Birthdate" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <label for="genderRadio" class="col-sm-1 control-label" style="margin-top: 10px;">Gender</label>
+                        <div class="col-sm-5">
+                            <div class="radio">
+                                <label class="fa fa-male" for="male" style="color: blue; margin-right: 20px;"></label>
+                                <input type="radio" name="genderRadio" id="male" value="M" />
+                                <label class="fa fa-female" for="female" style="color: darkorange; margin-right: 25px;"></label>
+                                <input type="radio" name="genderRadio" id="female" value="F" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <label for="ddDepartment" class="col-sm-1 control-label" style="margin-right: 30px;">Department</label>
+                        <select class="form-control" id="ddDepartment" style="margin-left: 20px;">
+                            @foreach (ProjectMVC.Model.EmployeeModel item in @ViewBag.BindDepartment)
+                            {
+                                <option value="@item.DepartmentCode">@item.DepartmentName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label for="supperSSNInput" class="col-sm-1 control-label" style="margin-top: 10px; margin-right: 40px;">SupervisorSSN</label>
+                        <div class="col-sm-5">
+                            <input id="supperSSNInput" name="supperSSNInput" class="form-control" type="text" style="margin-top: 10px" placeholder="SupperSSN" />
+                        </div>
+                        <label for="salary" class="col-sm-1 control-label" style="margin-top: 10px;">Salary</label>
+                        <div class="input-group" style="margin-top: 10px">
+                            <div class="input-group-addon">฿</div>
+                            <input type="text" class="form-control" id="salary" placeholder="Amount">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+
+                $('#employee_table').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "lengthMenu": [5, 10, 20],
+                    "ajax": {
+                        "type": "POST",
+                        "url": "/Employee/AjaxGetAllEmployee",
+                    },
+                    "columns": [
+                        { "data": "SSN" },
+                        { "data": "FirstName" },
+                        { "data": "LastName" },
+                        { "data": "MidName" },
+                        { "data": "Birthday" },
+                        { "data": "Address" },
+                        { "data": "Gender" },
+                        { "data": "DepartmentName" },
+                        { "data": "Salary" },
+                        {
+                            "data": function (row) {
+                                return '<a type="button" class="btn btn-info"' + '>' + 'Edit' + '</a>';
+                            }
+                        },
+                        {
+                            "data": function (row) {
+                                return '<a type="button" class="btn btn-danger"' + '>' + 'Delete' + '</a>';
+                            }
+                        }
+                    ],
+                });
+
+                $("#btnSearch").on('click', function () {
+                    filter()
+                });
+
+                $('#birthDatePicker').datetimepicker({
+                    format: 'DD/MM/YYYY'
+                });
+
+                $("#btnSave").on('click', function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Employee/AddEmployee",
+                        data:{
+                            ssn: $("#ssnInput").val(),
+                            firstname: $("#firstNameInput").Val(),
+                            lastname: $("#lastNameInput").val(),
+                            midname: $("midNameInput").val(),
+                            birthdate: $("#birthdateEmp").val(),
+                            gender: $('input:radio[name=genderRadio]:checked').val(),
+                            department: $("#ddDepartment option:selected").val(),
+                            salary: $("#salary").val(),
+                            supperssn: $("#supperSSNInput").val()
+                        },
+                        success: function (data) {
+                            alert("Add data success");
+                        }
+                    });
+                })
+
+                function filter() {
+                    $("#employee_table").DataTable().search(
+                        $("#txtSearchData").val()
+                      ).draw()
+                }
+            });
+        </script>
+    }

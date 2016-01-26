@@ -1,0 +1,10 @@
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\ProjectMVC.DataAccess.dll.config
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\ProjectMVC.DataAccess.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\ProjectMVC.DataAccess.pdb
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\EntityFramework.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\EntityFramework.xml
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\obj\Debug\ProjectMVC.DataAccess.csprojResolveAssemblyReference.cache
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\obj\Debug\ProjectMVC.DataAccess.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.DataAccess\obj\Debug\ProjectMVC.DataAccess.pdb

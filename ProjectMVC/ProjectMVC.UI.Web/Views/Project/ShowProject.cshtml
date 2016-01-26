@@ -1,0 +1,38 @@
+﻿@model List<ProjectMVC.Model.ProjectModal>
+
+@{
+    ViewBag.Title = "ShowProject";
+}
+
+@if (TempData["notice"] != null)
+{
+    <p>@TempData["notice"]</p>
+}
+<h2>ShowProject</h2>
+
+<div class="containeer">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project name</th>
+                    <th>Location</th>
+                    <th>Deparment</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ProjectMVC.Model.ProjectModal item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Location</td>
+                        <td>@item.DepartmentName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b882c0d84f424c80a5a37b16a8e28bff" Name="Diagram1">
+        <EntityTypeShape EntityType="TeamDBModel.Department" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamDBModel.DepartmentLocation" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamDBModel.Dependent" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamDBModel.Employee" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamDBModel.Project" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamDBModel.WorkOn" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="TeamDBModel.FK__Departmen__Depar__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK__Employee__Depart__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK_Project_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.ManagerSSN" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK__Dependent__Emplo__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK__Employee__Superv__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK__WorkOn__Employee__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamDBModel.FK__WorkOn__ProjectI__1DE57479" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

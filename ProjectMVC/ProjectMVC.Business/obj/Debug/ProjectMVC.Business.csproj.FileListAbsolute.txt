@@ -1,0 +1,11 @@
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.Business.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.Business.pdb
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\AutoMapper.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.DataAccess.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.Model.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.DataAccess.pdb
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\ProjectMVC.Model.pdb
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\bin\Debug\AutoMapper.xml
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\obj\Debug\ProjectMVC.Business.csprojResolveAssemblyReference.cache
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\obj\Debug\ProjectMVC.Business.dll
+D:\Training\MVC\ProjectMVC\ProjectMVC.Business\obj\Debug\ProjectMVC.Business.pdb
